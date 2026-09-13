@@ -17,7 +17,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              Create professional AI avatar videos with neural voice lip-sync, motion graphics, and VFX — no camera or studio required.
+              Programmatic 9:16 vertical video & reel generation powered by Remotion in pure React. Zero expensive third-party voiceover APIs.
             </p>
             <div className="flex items-center gap-4 text-slate-400 pt-2">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white transition-colors"><Twitter className="h-4 w-4" /></a>
@@ -26,14 +26,14 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Avatar Studio */}
+          {/* Reel Studio */}
           <div>
             <h4 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Studio</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link href="/create" className="hover:text-white transition-colors">Create Video</Link></li>
-              <li><Link href="/avatars" className="hover:text-white transition-colors">Avatar Library</Link></li>
-              <li><Link href="/voices" className="hover:text-white transition-colors">Voice & Cloning</Link></li>
-              <li><Link href="/templates" className="hover:text-white transition-colors">Video Templates</Link></li>
+              <li><Link href="/create" className="hover:text-white transition-colors">Create Reel</Link></li>
+              <li><Link href="/create" className="hover:text-white transition-colors">Remotion Studio</Link></li>
+              <li><Link href="/#why-no-voice" className="hover:text-white transition-colors">Visual-First Reels</Link></li>
+              <li><Link href="/#faq" className="hover:text-white transition-colors">FAQ</Link></li>
             </ul>
           </div>
 

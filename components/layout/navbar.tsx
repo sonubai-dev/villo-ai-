@@ -32,38 +32,39 @@ export function Navbar() {
 
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <Link href="/#modes" className="hover:text-white transition-colors">
-            Creation Modes
+          <Link href="/#features" className="hover:text-white transition-colors">
+            Features
           </Link>
-          <Link href="/#avatars" className="hover:text-white transition-colors">
-            AI Avatars
-          </Link>
-          <Link href="/#usecases" className="hover:text-white transition-colors">
-            Use Cases
+          <Link href="/#why-no-voice" className="hover:text-white transition-colors">
+            Why Visual-First
           </Link>
           <Link href="/#how-it-works" className="hover:text-white transition-colors">
             How It Works
           </Link>
-          <Link href="/#pricing" className="hover:text-white transition-colors">
-            Pricing
+          <Link href="/#comparison" className="hover:text-white transition-colors">
+            API Cost $0
+          </Link>
+          <Link href="/#faq" className="hover:text-white transition-colors">
+            FAQ
           </Link>
         </nav>
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
-          <Link href="/login" className="hidden sm:inline-flex text-sm font-medium text-slate-300 hover:text-white px-3 py-2">
-            Sign In
+          <Link href="/create" className="hidden sm:inline-flex text-sm font-medium text-slate-300 hover:text-white px-3 py-2">
+            Open Studio
           </Link>
-          <Button
-            onClick={handleDemoAccess}
-            variant="glow"
-            size="sm"
-            className="flex items-center gap-1.5"
-          >
-            <Sparkles className="h-4 w-4" />
-            <span>Launch App</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Button>
+          <Link href="/create">
+            <Button
+              variant="glow"
+              size="sm"
+              className="flex items-center gap-1.5 font-bold"
+            >
+              <Sparkles className="h-4 w-4" />
+              <span>Create Reel</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
