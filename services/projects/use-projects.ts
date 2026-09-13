@@ -8,7 +8,7 @@ import { Project, Scene, CreationType, AspectRatio } from "@/lib/types";
 import { projectService } from "./project-service";
 import { sceneService } from "@/services/scenes";
 import { useAppStore } from "@/lib/store";
-import { useAuth } from "@/components/auth/auth-provider";
+import { useUser } from "@clerk/nextjs";
 
 export interface UseProjectsResult {
   projects: Project[];
@@ -29,7 +29,7 @@ export interface UseProjectsResult {
 }
 
 export function useProjects(): UseProjectsResult {
-  const { user } = useAuth();
+  const { user } = useUser();
   const storeProjects = useAppStore((s) => s.projects);
   const [projects, setProjects] = useState<Project[]>(storeProjects);
   const [isLoading, setIsLoading] = useState<boolean>(true);

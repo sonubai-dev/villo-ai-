@@ -2,19 +2,10 @@
 
 import Link from "next/link";
 import { Sparkles, Video, ArrowRight } from "lucide-react";
-import { Button } from "@/lib/../components/ui/button";
-import { useAppStore } from "@/lib/store";
-import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export function Navbar() {
-  const router = useRouter();
-  const loginAsDemo = useAppStore((s) => s.loginAsDemo);
-
-  const handleDemoAccess = () => {
-    loginAsDemo();
-    router.push("/dashboard");
-  };
-
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/75 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -51,20 +42,43 @@ export function Navbar() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
-          <Link href="/create" className="hidden sm:inline-flex text-sm font-medium text-slate-300 hover:text-white px-3 py-2">
-            Open Studio
-          </Link>
-          <Link href="/create">
-            <Button
-              variant="glow"
-              size="sm"
-              className="flex items-center gap-1.5 font-bold"
-            >
-              <Sparkles className="h-4 w-4" />
-              <span>Create Reel</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Button>
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button variant="outline" size="sm" className="hidden sm:inline-flex border-slate-700/80 bg-slate-900/60 hover:bg-slate-800 hover:text-white font-semibold">
+                Sign In
+              </Button>
+            </SignInButton>
+            <SignInButton mode="modal">
+              <Button
+                variant="glow"
+                size="sm"
+                className="flex items-center gap-1.5 font-bold"
+              >
+                <Sparkles className="h-4 w-4" />
+                <span>Get Started</span>
+              </Button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <Link href="/create" className="hidden sm:inline-flex text-sm font-medium text-slate-300 hover:text-white px-3 py-2">
+              Open Studio
+            </Link>
+            <Link href="/create">
+              <Button
+                variant="glow"
+                size="sm"
+                className="flex items-center gap-1.5 font-bold"
+              >
+                <Sparkles className="h-4 w-4" />
+                <span>Create Reel</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Button>
+            </Link>
+            <div className="ml-2 pl-2 border-l border-slate-800">
+              <UserButton afterSignOutUrl="/" appearance={{ elements: { avatarBox: "h-9 w-9" } }} />
+            </div>
+          </SignedIn>
         </div>
       </div>
     </header>

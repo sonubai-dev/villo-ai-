@@ -8,24 +8,14 @@ import {
   Bell, 
   Plus, 
   Zap, 
-  User as UserIcon, 
-  LogOut, 
-  Sparkles, 
   Menu, 
-  X,
-  Layers,
-  Settings
+  X
 } from "lucide-react";
-import { useAppStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { authService } from "@/services/auth";
+import { UserButton } from "@clerk/nextjs";
 
 export function Header() {
   const router = useRouter();
-  const { user, logout, loginAsDemo } = useAppStore();
-  const [showNotifications, setShowNotifications] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -67,12 +57,11 @@ export function Header() {
           className="flex items-center gap-1.5 rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-400 hover:bg-sky-500/20 transition-colors"
         >
           <Zap className="h-3.5 w-3.5 fill-sky-400 text-sky-400" />
-          <span>{user?.credits ?? 85} Credits</span>
+          <span>85 Credits</span>
         </Link>
 
         {/* Notifications Icon */}
         <button
-          onClick={() => setShowNotifications(true)}
           className="relative rounded-xl p-2 text-slate-400 hover:bg-slate-900 hover:text-white transition-colors"
         >
           <Bell className="h-4 w-4" />
@@ -87,90 +76,11 @@ export function Header() {
           </Button>
         </Link>
 
-        {/* User Avatar Menu */}
-        <DropdownMenu
-          trigger={
-            <button className="flex items-center gap-2 rounded-full border border-slate-800 p-0.5 hover:border-slate-700 transition-colors">
-              <img
-                src={user?.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"}
-                alt={user?.name || "User"}
-                className="h-8 w-8 rounded-full object-cover"
-              />
-            </button>
-          }
-        >
-          <div className="px-3 py-2 border-b border-slate-850">
-            <p className="text-xs font-semibold text-white">{user?.name || "Demo Creator"}</p>
-            <p className="text-[11px] text-slate-400 truncate">{user?.email || "alex.rivera@vilo.ai"}</p>
-          </div>
-
-          <DropdownMenuItem onClick={() => router.push("/dashboard")}>
-            <Layers className="h-4 w-4 text-slate-400" />
-            <span>Dashboard</span>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem onClick={() => router.push("/projects")}>
-            <Layers className="h-4 w-4 text-slate-400" />
-            <span>My Projects</span>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem onClick={() => router.push("/avatars")}>
-            <UserIcon className="h-4 w-4 text-slate-400" />
-            <span>Avatar Library</span>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem onClick={() => router.push("/settings")}>
-            <Settings className="h-4 w-4 text-slate-400" />
-            <span>Settings & Credits</span>
-          </DropdownMenuItem>
-
-          <DropdownMenuSeparator />
-
-          <DropdownMenuItem
-            destructive
-            onClick={async () => {
-              await authService.signOut();
-              router.push("/login");
-            }}
-          >
-            <LogOut className="h-4 w-4" />
-            <span>Sign Out</span>
-          </DropdownMenuItem>
-        </DropdownMenu>
-      </div>
-
-      {/* Notifications Modal */}
-      <Dialog open={showNotifications} onOpenChange={setShowNotifications}>
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Bell className="h-5 w-5 text-sky-400" />
-            <span>Notifications</span>
-          </DialogTitle>
-          <DialogDescription>
-            Recent system updates and video rendering notifications
-          </DialogDescription>
-        </DialogHeader>
-        <div className="space-y-3 py-2">
-          <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3.5">
-            <div className="flex items-center justify-between text-xs text-sky-400 font-semibold mb-1">
-              <span>Rendering Finished</span>
-              <span className="text-slate-500 font-normal">10m ago</span>
-            </div>
-            <p className="text-sm text-slate-200">
-              Your video <strong>&quot;Luxury Horizon Penthouse Tour&quot;</strong> is ready for export in 1080p.
-            </p>
-          </div>
-          <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3.5">
-            <div className="flex items-center justify-between text-xs text-indigo-400 font-semibold mb-1">
-              <span>Welcome Bonus</span>
-              <span className="text-slate-500 font-normal">1h ago</span>
-            </div>
-            <p className="text-sm text-slate-200">
-              85 free demo credits were added to your workspace. Start creating!
-            </p>
-          </div>
+        {/* User Avatar Menu via Clerk */}
+        <div className="ml-1 pl-2">
+          <UserButton afterSignOutUrl="/" appearance={{ elements: { avatarBox: "h-9 w-9" } }} />
         </div>
-      </Dialog>
+      </div>
     </header>
   );
 }

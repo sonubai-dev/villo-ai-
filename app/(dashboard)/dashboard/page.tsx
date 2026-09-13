@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { useAppStore } from "@/lib/store";
 import { useProjects } from "@/services/projects";
-import { useAuth } from "@/components/auth/auth-provider";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
@@ -34,7 +34,7 @@ import { formatDuration, formatDate } from "@/lib/utils";
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user } = useUser();
   const { 
     projects, 
     isLoading,
@@ -80,7 +80,7 @@ export default function DashboardPage() {
               <span>AI Avatar Video Platform</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Welcome back, {user?.name?.split(" ")[0] || "Creator"}!
+              Welcome back, {user?.firstName || "Creator"}!
             </h1>
             <p className="text-sm text-slate-300 leading-relaxed">
               Create high-converting AI avatar videos with neural voice lip-sync, motion graphics, and VFX in minutes.
