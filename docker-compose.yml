@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # ---------------------------------------------------------------------------
+  # Next.js App + Remotion Engine Service
+  # ---------------------------------------------------------------------------
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vilo_web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://vilo_user:vilo_password@db:5432/vilo_db?sslmode=disable
+      - JWT_SECRET=vilo_super_secret_jwt_key_2026_change_in_production
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - vilo_exports:/app/public/exports
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL Database Service
+  # ---------------------------------------------------------------------------
+  db:
+    image: postgres:16-alpine
+    container_name: vilo_db
+    restart: always
+    environment:
+      POSTGRES_USER: vilo_user
+      POSTGRES_PASSWORD: vilo_password
+      POSTGRES_DB: vilo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vilo_user -d vilo_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  vilo_exports:
