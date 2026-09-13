@@ -23,8 +23,8 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
 
-# Copy dependency files
-COPY package*.json ./
+# Copy dependency file
+COPY package.json ./
 
 # Install dependencies
 RUN npm install --legacy-peer-deps
