@@ -1,0 +1,19 @@
+# Nixpacks configuration for Next.js + Remotion (FFmpeg & Chromium)
+[phases.setup]
+nixPkgs = [
+  "nodejs", 
+  "npm",
+  "ffmpeg", 
+  "chromium", 
+  "nss", 
+  "freetype", 
+  "harfbuzz", 
+  "pango", 
+  "alsa-lib"
+]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm run start"

@@ -1,0 +1,92 @@
+c:\Users\sonu\Desktop\Vilo\app\(auth)\forgot-password\page.tsx:88: placeholder="name@company.com"
+c:\Users\sonu\Desktop\Vilo\app\(auth)\login\page.tsx:25: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\brand-kit\page.tsx:42: setTimeout(() => setSavedSuccess(false), 2000);
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\brand-kit\page.tsx:74: placeholder="e.g. Apex Real Estate Group"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\brand-kit\page.tsx:130: {/* Logo upload placeholder */}
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar\page.tsx:79: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar\page.tsx:148: placeholder="e.g. Executive Q3 Update"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar\page.tsx:253: placeholder="What should your presenter say?"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar-motion\page.tsx:159: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar-motion\page.tsx:179: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar-motion\page.tsx:286: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar-motion\page.tsx:291: alert(err.message || "Failed to render video");
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar-motion\page.tsx:434: placeholder="What should your AI avatar say in this video?"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\avatar-motion\page.tsx:1162: placeholder="e.g. My Personal Podcast Voice"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\image-splitter\page.tsx:120: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\image-splitter\page.tsx:318: placeholder="Narration script for this scene..."
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\image-video\page.tsx:203: placeholder="Describe this scene or enter voiceover..."
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\presentation\page.tsx:64: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\create\script\page.tsx:131: placeholder="e.g. Create a 30-second product explainer about our automated video editor..."
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\dashboard\page.tsx:320: placeholder="e.g. Luxury Penthouse Walkthrough"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\media\page.tsx:157: placeholder="Search tags, topics, titles..."
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\media\page.tsx:336: alert(`Asset "${previewItem.title}" copied to clipboard ready for scenes.`);
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\media\page.tsx:364: placeholder="e.g. Modern Office Drone Clip"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\media\page.tsx:388: placeholder="https://images.unsplash.com/..."
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\profile\page.tsx:42: setTimeout(() => setSavedSuccess(false), 2000);
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\projects\page.tsx:145: placeholder="Search projects by title..."
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\projects\page.tsx:354: placeholder="e.g. Q3 Executive Update"
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\projects\[id]\export\page.tsx:142: setTimeout(() => setCopiedLink(false), 2000);
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\settings\page.tsx:49: setTimeout(() => setSavedSuccess(false), 2000);
+c:\Users\sonu\Desktop\Vilo\app\(dashboard)\voices\page.tsx:83: placeholder="Enter custom sentence to hear any voice speak..."
+c:\Users\sonu\Desktop\Vilo\app\api\webhooks\avatar\route.ts:50: console.log(`[Avatar Webhook] Verified event '${event}' for job: ${jobId}`);
+c:\Users\sonu\Desktop\Vilo\app\editor\[id]\scene\[sceneId]\page.tsx:119: setTimeout(() => setSavedBanner(false), 2000);
+c:\Users\sonu\Desktop\Vilo\app\editor\[id]\scene\[sceneId]\page.tsx:370: placeholder="Cinematic scene description, 8k photographic details..."
+c:\Users\sonu\Desktop\Vilo\app\editor\[id]\scene\[sceneId]\page.tsx:393: placeholder="e.g. Anamorphic lens flare, shallow focus"
+c:\Users\sonu\Desktop\Vilo\components\editor\export-modal.tsx:104: setTimeout(() => setCopiedLink(false), 2000);
+c:\Users\sonu\Desktop\Vilo\components\editor\media-picker-modal.tsx:107: placeholder="Search tags, topics..."
+c:\Users\sonu\Desktop\Vilo\components\editor\scene-inspector.tsx:125: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\components\editor\scene-inspector.tsx:135: setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\components\editor\scene-inspector.tsx:246: placeholder="Describe the image environment, lighting, composition..."
+c:\Users\sonu\Desktop\Vilo\components\editor\scene-inspector.tsx:257: placeholder="blurry, distorted, artifacts, lowres"
+c:\Users\sonu\Desktop\Vilo\components\editor\scene-inspector.tsx:533: placeholder="e.g. 42 Horizon Crest Penthouse"
+c:\Users\sonu\Desktop\Vilo\components\editor\scene-inspector.tsx:678: placeholder="Enter what the presenter will say in this scene..."
+c:\Users\sonu\Desktop\Vilo\components\layout\header.tsx:54: placeholder="Search projects, templates, avatars..."
+c:\Users\sonu\Desktop\Vilo\components\layout\header.tsx:57: className="h-9 w-full rounded-xl border border-slate-800 bg-slate-900/90 pl-9 pr-4 text-xs text-slate-200 placeholder:text-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 transition-all"
+c:\Users\sonu\Desktop\Vilo\components\ui\input.tsx:12: "flex h-10 w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2 text-sm text-slate-100 placeholder:text-slate-500 transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+c:\Users\sonu\Desktop\Vilo\components\ui\input.tsx:30: "flex min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+c:\Users\sonu\Desktop\Vilo\components\ui\textarea.tsx:11: "flex min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+c:\Users\sonu\Desktop\Vilo\lib\ai\rate-limiter.ts:51: timeoutId = setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\lib\ai\rate-limiter.ts:94: await new Promise((res) => setTimeout(res, delay));
+c:\Users\sonu\Desktop\Vilo\lib\credits\server-credit-service.ts:84: console.log(`[CreditService] Idempotency match on reservation: returning ${existingTx.id}`);
+c:\Users\sonu\Desktop\Vilo\lib\credits\server-credit-service.ts:163: console.log(`[CreditService] Transaction ${tx.id} already refunded`);
+c:\Users\sonu\Desktop\Vilo\lib\providers\avatar\mock-avatar-provider.ts:44: const t1 = setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\lib\providers\avatar\mock-avatar-provider.ts:51: const t2 = setTimeout(async () => {
+c:\Users\sonu\Desktop\Vilo\lib\providers\lipsync\local-lipsync-provider.ts:26: const timeoutId = setTimeout(() => controller.abort(), 1000);
+c:\Users\sonu\Desktop\Vilo\lib\providers\mock\mock-avatar.ts:98: await new Promise((r) => setTimeout(r, 100));
+c:\Users\sonu\Desktop\Vilo\lib\providers\mock\mock-script.ts:6: await new Promise((r) => setTimeout(r, 600));
+c:\Users\sonu\Desktop\Vilo\lib\providers\mock\mock-video.ts:21: await new Promise((r) => setTimeout(r, 800));
+c:\Users\sonu\Desktop\Vilo\lib\providers\mock\mock-voice.ts:75: await new Promise((r) => setTimeout(r, 80));
+c:\Users\sonu\Desktop\Vilo\lib\providers\voice\mock-voice-provider.ts:15: await new Promise((r) => setTimeout(r, 60));
+c:\Users\sonu\Desktop\Vilo\lib\providers\voice\mock-voice-provider.ts:36: await new Promise((r) => setTimeout(r, 120));
+c:\Users\sonu\Desktop\Vilo\lib\rendering\video-rendering-worker.ts:55: // Write placeholder/downloaded assets into temp workspace
+c:\Users\sonu\Desktop\Vilo\lib\rendering\video-rendering-worker.ts:76: await new Promise((res) => setTimeout(res, 350));
+c:\Users\sonu\Desktop\Vilo\lib\rendering\video-rendering-worker.ts:79: await new Promise((res) => setTimeout(res, 250));
+c:\Users\sonu\Desktop\Vilo\lib\rendering\video-rendering-worker.ts:124: console.log(`[VideoRenderingWorker] Successfully cleaned temporary workspace: ${tempDir}`);
+c:\Users\sonu\Desktop\Vilo\lib\speech-engine.ts:51: const timer = setTimeout(() => {
+c:\Users\sonu\Desktop\Vilo\lib\worker\self-hosted-worker.ts:117: await new Promise((res) => setTimeout(res, 200));
+c:\Users\sonu\Desktop\Vilo\lib\worker\self-hosted-worker.ts:121: await new Promise((res) => setTimeout(res, 300));
+c:\Users\sonu\Desktop\Vilo\services\avatar-motion\avatar-motion-pipeline.ts:91: await new Promise((res) => setTimeout(res, 600));
+c:\Users\sonu\Desktop\Vilo\services\avatar-motion\avatar-motion-pipeline.ts:146: await new Promise((res) => setTimeout(res, 800));
+c:\Users\sonu\Desktop\Vilo\services\avatar-motion\providers\mock-avatar-provider.ts:14: await new Promise((res) => setTimeout(res, 2000));
+c:\Users\sonu\Desktop\Vilo\services\avatar-motion\providers\mock-motion-provider.ts:13: await new Promise((res) => setTimeout(res, 1000));
+c:\Users\sonu\Desktop\Vilo\services\avatar-motion\providers\mock-video-provider.ts:22: await new Promise((res) => setTimeout(res, 900));
+c:\Users\sonu\Desktop\Vilo\services\avatar-motion\providers\mock-voice-provider.ts:13: await new Promise((res) => setTimeout(res, 1200));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\production-studio-service.ts:75: console.log(`[ProductionStudio] Idempotency hit: returning existing job ${existingJob.id}`);
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-audiomix-provider.ts:13: await new Promise((r) => setTimeout(r, 500 + Math.random() * 200));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-avatar-provider.ts:30: await new Promise((r) => setTimeout(r, 500 + Math.random() * 300));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-caption-provider.ts:13: await new Promise((r) => setTimeout(r, 400 + Math.random() * 200));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-lipsync-provider.ts:31: await new Promise((r) => setTimeout(r, 400 + Math.random() * 200));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-motion-provider.ts:13: await new Promise((r) => setTimeout(r, 600 + Math.random() * 300));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-render-provider.ts:25: await new Promise((r) => setTimeout(r, 400 + Math.random() * 200));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-scene-planner.ts:14: await new Promise((r) => setTimeout(r, 600 + Math.random() * 300));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-vfx-provider.ts:13: await new Promise((r) => setTimeout(r, 500 + Math.random() * 300));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\providers\mock-voice-provider.ts:52: await new Promise((r) => setTimeout(r, 400 + Math.random() * 200));
+c:\Users\sonu\Desktop\Vilo\services\avatar-studio\studio-pipeline.ts:106: setTimeout(() => reject(new Error(`TIMEOUT: ${label} exceeded ${timeoutMs}ms`)), timeoutMs)
+c:\Users\sonu\Desktop\Vilo\services\generation\firebase-job-orchestrator.ts:64: // 1. Initial VideoPlan (either provided or placeholder to be planned)
+c:\Users\sonu\Desktop\Vilo\services\generation\firebase-job-orchestrator.ts:274: await new Promise((r) => setTimeout(r, 400));
+c:\Users\sonu\Desktop\Vilo\services\generation\firebase-job-orchestrator.ts:362: await new Promise((r) => setTimeout(r, 300)); // Internal compositing simulation
+c:\Users\sonu\Desktop\Vilo\services\generation\firebase-job-orchestrator.ts:379: await new Promise((r) => setTimeout(r, 400));
+c:\Users\sonu\Desktop\Vilo\services\generation\job-orchestrator.ts:39: console.log(`[JobOrchestrator] Idempotency match: returning active job ${existing.id}`);
+c:\Users\sonu\Desktop\Vilo\services\generation\job-orchestrator.ts:163: await new Promise((res) => setTimeout(res, stage.delayMs));
+c:\Users\sonu\Desktop\Vilo\services\image-splitter\detector.ts:20: await new Promise((resolve) => setTimeout(resolve, 100));
+c:\Users\sonu\Desktop\Vilo\services\scenes\scene-service.ts:80: const timeout = setTimeout(async () => {

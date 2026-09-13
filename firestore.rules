@@ -1,0 +1,253 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ============================================================================
+    // HELPER FUNCTIONS
+    // ============================================================================
+
+    // Check if the user is authenticated with Firebase Auth
+    function isAuthenticated() {
+      return request.auth != null && request.auth.uid != null;
+    }
+
+    // Check if the current user owns the resource / matches the given userId
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Check if the authenticated user has verified Admin privileges
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.token.role == 'admin'
+      );
+    }
+
+    // Returns true if the user's project exists and is owned by request.auth.uid
+    function isProjectOwner(projectId) {
+      return isAuthenticated() && (
+        get(/databases/$(database)/documents/projects/$(projectId)).data.userId == request.auth.uid
+      );
+    }
+
+    // ============================================================================
+    // USERS COLLECTION: /users/{userId}
+    // ============================================================================
+    match /users/{userId} {
+      // 1. Only the owner or an admin can read private user profile data
+      allow read: if isOwner(userId) || isAdmin();
+
+      // 2. User can only create their own initial profile with default tier/credits
+      allow create: if isOwner(userId) &&
+        request.resource.data.id == userId &&
+        request.resource.data.credits == 50 &&
+        (request.resource.data.plan == 'free' || request.resource.data.tier == 'free') &&
+        !('isAdmin' in request.resource.data) &&
+        !('role' in request.resource.data) &&
+        !('billingStatus' in request.resource.data);
+
+      // 3. User CANNOT modify sensitive fields (credits, plan, tier, billingStatus, admin roles)
+      allow update: if (
+        isOwner(userId) && (
+          !request.resource.data.diff(resource.data).affectedKeys().hasAny([
+            'credits',
+            'plan',
+            'tier',
+            'billingStatus',
+            'subscriptionId',
+            'stripeCustomerId',
+            'isAdmin',
+            'role',
+            'createdAt',
+            'id'
+          ])
+        )
+      ) || isAdmin();
+
+      // 4. Deletion only permitted by Admin or server
+      allow delete: if isAdmin();
+
+      // Nested Cloned Voices Subcollection: /users/{userId}/voices/{voiceId}
+      match /voices/{voiceId} {
+        allow read, delete: if isOwner(userId) || isAdmin();
+        allow create, update: if isOwner(userId) && request.resource.data.userId == userId;
+      }
+    }
+
+    // ============================================================================
+    // PROJECTS COLLECTION: /projects/{projectId}
+    // ============================================================================
+    match /projects/{projectId} {
+      // Only the project owner or admin can read the project
+      allow read: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+
+      // Users can only create projects assigned to their own auth UID
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid;
+
+      // Users can only update their own projects and cannot transfer ownership
+      allow update: if isAuthenticated() && (
+        (resource.data.userId == request.auth.uid && request.resource.data.userId == request.auth.uid) ||
+        isAdmin()
+      );
+
+      // Users can only delete their own projects
+      allow delete: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+
+      // Nested Project Scenes Subcollection: /projects/{projectId}/scenes/{sceneId}
+      match /scenes/{sceneId} {
+        allow read, write: if isProjectOwner(projectId) || isAdmin();
+      }
+    }
+
+    // ============================================================================
+    // STANDALONE SCENES COLLECTION: /scenes/{sceneId}
+    // ============================================================================
+    match /scenes/{sceneId} {
+      allow read: if isAuthenticated() && (
+        isProjectOwner(resource.data.projectId) || isAdmin()
+      );
+
+      allow create: if isAuthenticated() && (
+        isProjectOwner(request.resource.data.projectId) || isAdmin()
+      );
+
+      allow update, delete: if isAuthenticated() && (
+        isProjectOwner(resource.data.projectId) || isAdmin()
+      );
+    }
+
+    // ============================================================================
+    // GENERATION JOBS COLLECTION: /generationJobs/{jobId}
+    // ============================================================================
+    match /generationJobs/{jobId} {
+      // Users can only read their own generation jobs
+      allow read: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+
+      // Users can create a new job in 'queued' or 'processing' initial state
+      // Must NOT be able to inject fake completed video URLs or fake progress
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.status in ['queued', 'processing'] &&
+        (request.resource.data.progress == 0 || request.resource.data.progress == 5) &&
+        !('videoUrl' in request.resource.data) &&
+        !('outputVideoUrl' in request.resource.data);
+
+      // Status, progress, provider, outputVideoUrl, and errors are controlled server-side only
+      allow update: if isAdmin();
+
+      // Owner can delete job record
+      allow delete: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+    }
+
+    // ============================================================================
+    // CREDIT TRANSACTIONS COLLECTION: /creditTransactions/{txId}
+    // ============================================================================
+    match /creditTransactions/{txId} {
+      // Users can read their own transactions
+      allow read: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+
+      // Users CANNOT create or modify credit transactions directly (Server/Admin only)
+      allow write: if isAdmin();
+    }
+
+    // ============================================================================
+    // BRAND KITS COLLECTION: /brandKits/{brandKitId}
+    // ============================================================================
+    match /brandKits/{brandKitId} {
+      allow read: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid;
+
+      allow update, delete: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+    }
+
+    // ============================================================================
+    // MEDIA ASSETS COLLECTION: /mediaAssets/{assetId}
+    // ============================================================================
+    match /mediaAssets/{assetId} {
+      // Public stock media or user's own private uploads
+      allow read: if isAuthenticated() && (
+        resource.data.isPublic == true ||
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid;
+
+      allow update, delete: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+    }
+
+    // ============================================================================
+    // PUBLIC / SYSTEM CATALOGS: /avatars, /voices, /templates
+    // ============================================================================
+    match /avatars/{avatarId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /voices/{voiceId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /templates/{templateId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================================================
+    // GENERATED ASSETS & CACHE COLLECTIONS: /generatedAssets, /audioCache, etc.
+    // ============================================================================
+    match /generatedAssets/{hash} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /audioCache/{hash} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /avatarCache/{hash} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /lipSyncCache/{hash} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /aiCache/{hash} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================================================
+    // DEFAULT CATCH-ALL: DENY EVERYTHING ELSE
+    // ============================================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

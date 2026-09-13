@@ -1,0 +1,83 @@
+app\(auth)\forgot-password\page.tsx:95: <Button type="submit" variant="glow" className="w-full font-semibold" disabled={isLoading}>
+app\(auth)\login\page.tsx:101: disabled={isLoading}
+app\(auth)\login\page.tsx:157: <Button type="submit" variant="secondary" className="w-full font-semibold" disabled={isLoading}>
+app\(auth)\login\page.tsx:167: disabled={isLoading}
+app\(auth)\signup\page.tsx:135: <Button type="submit" variant="secondary" className="w-full font-semibold" disabled={isLoading}>
+app\(dashboard)\create\avatar\page.tsx:231: disabled={isGeneratingScript}
+app\(dashboard)\create\avatar-motion\page.tsx:290: console.error("Pipeline failed:", err);
+app\(dashboard)\create\avatar-motion\page.tsx:337: disabled={!script.trim()}
+app\(dashboard)\create\avatar-motion\page.tsx:421: disabled={isAiGeneratingScript}
+app\(dashboard)\create\avatar-motion\page.tsx:884: disabled={!script.trim()}
+app\(dashboard)\create\avatar-motion\page.tsx:1176: disabled={isCloning || !cloneName.trim()}
+app\(dashboard)\create\image-splitter\page.tsx:79: console.error("Detection error:", err);
+app\(dashboard)\create\image-splitter\page.tsx:124: console.error("[ImageSplitter] Job error:", err);
+app\(dashboard)\create\image-splitter\page.tsx:152: disabled={isProcessing || crops.length === 0}
+app\(dashboard)\create\image-splitter\page.tsx:389: disabled={isProcessing || crops.length === 0}
+app\(dashboard)\create\script\page.tsx:69: console.error(err);
+app\(dashboard)\create\script\page.tsx:197: disabled={isGenerating}
+app\(dashboard)\projects\[id]\export\page.tsx:95: console.error("Error creating generation job:", err);
+app\(dashboard)\projects\[id]\export\page.tsx:140: navigator.clipboard.writeText(window.location.href);
+app\(dashboard)\settings\page.tsx:55: window.location.reload();
+app\(dashboard)\settings\page.tsx:101: disabled={isCheckingHealth}
+app\api\ai\analyze-document\route.ts:36: console.error("[API /api/ai/analyze-document] Error:", err);
+app\api\ai\analyze-image\route.ts:37: console.error("[API /api/ai/analyze-image] Error:", err);
+app\api\ai\scenes\route.ts:37: console.error("[API /api/ai/scenes] Error:", err);
+app\api\ai\script\route.ts:40: console.error("[API /api/ai/script] Error:", err);
+app\api\credits\refund\route.ts:30: console.error("[API /api/credits/refund] Error:", err);
+app\api\credits\reserve\route.ts:55: console.error("[API /api/credits/reserve] Error:", err.message);
+app\api\credits\settle\route.ts:23: console.error("[API /api/credits/settle] Error:", err);
+app\api\render\worker\route.ts:53: console.error("[API /api/render/worker] Rendering error:", err);
+app\api\voice\generate\route.ts:43: console.error("[API /api/voice/generate] Error:", err);
+app\api\webhooks\avatar\route.ts:89: console.error("[Avatar Webhook] Processing error:", err);
+audit-results.txt:45: c:\Users\sonu\Desktop\Vilo\components\ui\input.tsx:12: "flex h-10 w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2 text-sm text-slate-100 placeholder:text-slate-500 transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+audit-results.txt:46: c:\Users\sonu\Desktop\Vilo\components\ui\input.tsx:30: "flex min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+audit-results.txt:47: c:\Users\sonu\Desktop\Vilo\components\ui\textarea.tsx:11: "flex min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+components\editor\export-modal.tsx:88: console.error("Failed to create export job:", err);
+components\editor\export-modal.tsx:102: navigator.clipboard?.writeText(window.location.href);
+components\editor\media-picker-modal.tsx:223: disabled={!selectedItem}
+components\editor\scene-inspector.tsx:235: disabled={isGeneratingVisual}
+components\editor\scene-inspector.tsx:667: disabled={isEnhancingScript}
+components\editor\scene-list.tsx:105: disabled={idx === 0}
+components\editor\scene-list.tsx:106: className="p-1 hover:text-white disabled:opacity-20 transition-colors"
+components\editor\scene-list.tsx:116: disabled={idx === scenes.length - 1}
+components\editor\scene-list.tsx:117: className="p-1 hover:text-white disabled:opacity-20 transition-colors"
+components\layout\footer.tsx:23: <a href="#" className="hover:text-white transition-colors"><Twitter className="h-4 w-4" /></a>
+components\layout\footer.tsx:24: <a href="#" className="hover:text-white transition-colors"><Github className="h-4 w-4" /></a>
+components\layout\footer.tsx:25: <a href="#" className="hover:text-white transition-colors"><Linkedin className="h-4 w-4" /></a>
+components\layout\footer.tsx:59: <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+components\layout\footer.tsx:60: <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
+components\ui\button.tsx:11: const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 disabled:pointer-events-none disabled:opacity-50 select-none active:scale-[0.98]";
+components\ui\input.tsx:12: "flex h-10 w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2 text-sm text-slate-100 placeholder:text-slate-500 transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+components\ui\input.tsx:30: "flex min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+components\ui\tabs.tsx:82: "inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-1.5 text-xs sm:text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 gap-2",
+components\ui\textarea.tsx:11: "flex min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+lib\firebase\firestore.ts:63: console.error("[Firestore] getFirestoreUser error:", err);
+lib\firebase\firestore.ts:77: console.error("[Firestore] saveFirestoreUser error:", err);
+lib\firebase\firestore.ts:95: console.error("[Firestore] getFirestoreProjects error:", err);
+lib\firebase\firestore.ts:108: console.error("[Firestore] getFirestoreProjectById error:", err);
+lib\firebase\firestore.ts:122: console.error("[Firestore] saveFirestoreProject error:", err);
+lib\firebase\firestore.ts:132: console.error("[Firestore] deleteFirestoreProject error:", err);
+lib\firebase\firestore.ts:174: console.error("[Firestore] getFirestoreBrandKits error:", err);
+lib\firebase\firestore.ts:185: console.error("[Firestore] saveFirestoreBrandKit error:", err);
+lib\firebase\firestore.ts:198: console.error("[Firestore] getFirestoreMediaAssets error:", err);
+lib\firebase\firestore.ts:213: console.error("[Firestore] saveFirestoreMediaAsset error:", err);
+lib\firebase\firestore.ts:226: console.error("[Firestore] createFirestoreJob error:", err);
+lib\firebase\storage.ts:47: console.error("[Storage] Upload failed:", error);
+lib\providers\avatar\production-avatar-provider.ts:107: console.error("[ProductionAvatarProvider] createAvatarVideo failed, falling back to mock:", err.message);
+lib\providers\voice\production-voice-provider.ts:137: console.error("[ProductionVoiceProvider] generateSpeech failed, delegating to Mock:", err.message);
+services\avatar-motion\avatar-motion-pipeline.ts:201: console.error("[AvatarMotionPipeline] Auto-refund error:", refundErr.message);
+services\avatar-studio\production-studio-service.ts:204: console.error("[ProductionStudio] Auto-refund error:", refundErr.message);
+services\avatar-studio\production-studio-service.ts:341: console.error("[ProductionStudio] Listener error:", err);
+services\generation\firebase-job-orchestrator.ts:103: console.error(`[FirebaseOrchestrator] Job ${jobId} failed:`, err.message);
+services\generation\firebase-job-orchestrator.ts:129: console.error(`[FirebaseOrchestrator] Resumed job ${jobId} failed:`, err.message);
+services\generation\firebase-job-orchestrator.ts:532: console.error("[FirebaseOrchestrator] Subscriber error:", e);
+services\generation\job-orchestrator.ts:84: console.error(`[JobOrchestrator] Pipeline error on job ${jobId}:`, err);
+services\generation\job-orchestrator.ts:267: this.processJobPipeline(jobId).catch(console.error);
+services\generation\job-orchestrator.ts:366: console.error("[JobOrchestrator] Listener callback error:", err);
+services\projects\project-repository.ts:202: console.error("[FirestoreProjectRepository] create project error:", err);
+services\projects\project-repository.ts:236: console.error("[FirestoreProjectRepository] update error:", err);
+services\projects\project-repository.ts:253: console.error("[FirestoreProjectRepository] delete error:", err);
+services\projects\project-repository.ts:294: console.error("[FirestoreProjectRepository] duplicate error:", err);
+services\projects\use-projects.ts:47: console.error("[useProjects] Error fetching projects:", err);
+services\projects\use-projects.ts:140: console.error("[useProject] Fetch error:", err);
+services\scenes\scene-service.ts:86: console.error("[SceneService] Debounced sync failed:", err);

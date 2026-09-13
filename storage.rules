@@ -1,0 +1,137 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ============================================================================
+    // HELPER FUNCTIONS
+    // ============================================================================
+
+    // Check if user is authenticated with Firebase Auth
+    function isAuthenticated() {
+      return request.auth != null && request.auth.uid != null;
+    }
+
+    // Check if authenticated user owns the resource path matching userId
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Check if authenticated user is admin
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.token.role == 'admin'
+      );
+    }
+
+    // Validate image MIME type and file size (max 10MB)
+    function isValidImage() {
+      return request.resource.size <= 10 * 1024 * 1024 &&
+        request.resource.contentType.matches('image/(jpeg|png|webp|gif|svg\\+xml)');
+    }
+
+    // Validate audio MIME type and file size (max 25MB)
+    function isValidAudio() {
+      return request.resource.size <= 25 * 1024 * 1024 &&
+        request.resource.contentType.matches('audio/(mpeg|mp3|wav|ogg|aac|webm)');
+    }
+
+    // Validate video MIME type and file size (max 100MB)
+    function isValidVideo() {
+      return request.resource.size <= 100 * 1024 * 1024 &&
+        request.resource.contentType.matches('video/(mp4|webm|quicktime)');
+    }
+
+    // ============================================================================
+    // USER PRIVATE MEDIA ASSETS: /users/{userId}/media/{category}/{fileName}
+    // ============================================================================
+    match /users/{userId}/media/{category}/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && (
+        (category == 'images' && isValidImage()) ||
+        (category == 'videos' && isValidVideo()) ||
+        (category == 'music' && isValidAudio()) ||
+        (category == 'sfx' && isValidAudio())
+      );
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // USER CLONED VOICE SAMPLES: /users/{userId}/voices/{voiceId}/{fileName}
+    // ============================================================================
+    match /users/{userId}/voices/{voiceId}/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidAudio();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // USER BRAND ASSETS: /users/{userId}/brand/{fileName}
+    // ============================================================================
+    match /users/{userId}/brand/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidImage();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // PROJECT AUDIO ASSETS: /users/{userId}/projects/{projectId}/audio/{fileName}
+    // ============================================================================
+    match /users/{userId}/projects/{projectId}/audio/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidAudio();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // PROJECT VIDEO RENDERS: /users/{userId}/projects/{projectId}/renders/{fileName}
+    // ============================================================================
+    match /users/{userId}/projects/{projectId}/renders/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidVideo();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // PROJECT AVATAR VIDEOS: /users/{userId}/projects/{projectId}/avatar/{fileName}
+    // ============================================================================
+    match /users/{userId}/projects/{projectId}/avatar/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidVideo();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // PROJECT THUMBNAILS: /users/{userId}/projects/{projectId}/thumbnails/{fileName}
+    // ============================================================================
+    match /users/{userId}/projects/{projectId}/thumbnails/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidImage();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // PROJECT INTERMEDIATE ASSETS: /users/{userId}/projects/{projectId}/intermediate/{fileName}
+    // ============================================================================
+    match /users/{userId}/projects/{projectId}/intermediate/{fileName} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId);
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ============================================================================
+    // PUBLIC STOCK ASSETS: /public/** (Read-Only)
+    // ============================================================================
+    match /public/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================================================
+    // DEFAULT DENY CATCH-ALL
+    // ============================================================================
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
